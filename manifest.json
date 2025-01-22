@@ -3,22 +3,20 @@
   "name": "KickIt",
   "version": "1.0",
   "description": "KitckIt is a extension that has changes and features that i would like to add ot Kick.com",
-  "permissions": ["tabs"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_icon": {
-      "16": "images/icon16.png",
-      "48": "images/icon48.png",
-      "128": "images/icon128.png"
-    }
-  },
+  "permissions": ["tab", "activeTab", "webNavigation"],
 
   "background": {
     "service_worker": "background.js"
   },
-  "icons": {
-    "16": "images/icon16.png",
-    "48": "images/icon48.png",
-    "128": "images/icon128.png"
+
+  "content_scripts": [
+    {
+      "matches": ["*://kick.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup.html"
   }
 }
